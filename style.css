@@ -413,7 +413,8 @@ header {
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
+    padding: 0 50px;
 }
 
     .skills-box img {
@@ -517,12 +518,17 @@ header {
 .contact-box input {
     padding: 7.5px 30px;
     background-color: lightgray;
-    width: 80px;
+    width: 500px;
     height: 25px;
     border: none;
     outline: none;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.contact-box textarea {
+    width: 500px;
+    height: 100px;
 }
 
 .contact-box button {
@@ -798,11 +804,15 @@ footer h1 {
         position: static;
         text-align: center;
         margin: 20px 0;
+        align-items: center;
+        margin: 0 auto;
     }
+
 
         .profile-info h1 {
             font-size: 24px;
             line-height: 1.4;
+            margin-top: 30%;
         }
 
         .profile-info p {
@@ -812,6 +822,7 @@ footer h1 {
 
         .profile-picture img {
             width: 200px;
+            margin-top: 20%;
         }
 }
 
@@ -838,8 +849,8 @@ footer h1 {
         flex-direction: column;
         align-items: center;
         gap: 30px;
-        margin-bottom: 30px;
-        margin-top: 30px;
+        margin-bottom: 100px;
+        margin-top: 70px;
     }
 
     .project-info {
@@ -854,6 +865,7 @@ footer h1 {
             width: 100%;
             max-width: 100%;
             text-wrap: wrap;
+            text-align: center;
         }
 
         .project-info a.button {
@@ -868,6 +880,35 @@ footer h1 {
 
     .side-bar {
         display: inline;
+    }
+
+    .skills-section {
+        margin-top: 100%;
+    }
+
+        .skills-section p,
+        .contact-section p {
+            text-align: center;
+            justify-content: center;
+        }
+
+    .contact-box input,
+    .contact-box textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccccccb6;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .contact-box button,
+    .social-icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 0 auto; /* This centers the button within its parent container */
     }
 }
 
