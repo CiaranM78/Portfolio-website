@@ -19,13 +19,15 @@ body {
 }
 
 /* ==================== CONTAINERS ==================== */
-.container {
+.container{
     position: relative;
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 100px;
+    overflow-x: hidden;
 }
 
 .page-wrapper {
@@ -38,6 +40,8 @@ body {
     justify-content: center;
     position: relative;
     z-index: 1;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 /* ==================== BACKGROUND VIDEO ==================== */
@@ -100,7 +104,6 @@ header ul li a:hover {
 }
 
 /*image logo on header*/
-
 .left{
     display: flex;
     align-items: center;
@@ -138,7 +141,7 @@ header ul li a:hover {
 }
 
 /* ==================== PROFILE ==================== */
-.profile {
+.profile, .profile-display {
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -151,6 +154,7 @@ header ul li a:hover {
     border: 2px solid rgba(129, 67, 211, 0.4);
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(129, 67, 211, 0.2);
+    box-sizing: border-box;
 }
 
 .profile-info {
@@ -166,10 +170,9 @@ header ul li a:hover {
 
 .video-container iframe {
     width: 100%;
-    max-width: 1000px;
-    height: 500px;
-    border-radius: 10px;
-    border: none;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
 }
 
 /* ==================== CONTENT BOXES ==================== */
@@ -180,6 +183,7 @@ header ul li a:hover {
     box-shadow: 0 0 20px rgba(129, 67, 211, 0.2);
     padding: 20px;
     margin: 20px 0;
+    box-sizing: border-box;
 }
 
 /* ==================== GRADIENT TEXT ==================== */
@@ -214,12 +218,22 @@ header ul li a:hover {
     box-shadow: 0 0 12px rgba(129, 67, 211, 0.705);
 }
 
+/* Button container */
 .button-section {
-    display: flex;           
-    justify-content: center; 
-    width: 100%;             
-    margin-top: 30px;  
-    padding-bottom: 5%;      
+    display: flex;
+    flex-direction: row;       /* desktop: side by side */
+    justify-content: center;   /* center horizontally */
+    align-items: center;
+    gap: 20px;
+    width: 100%;               /* full container width */
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.button-section .button {
+    padding: 15px 35px;
+    font-size: 1rem;
+    text-align: center;
 }
 
 /* ==================== FOOTER ==================== */
@@ -242,16 +256,12 @@ footer h1 {
 /*//////////////////////////*/
 
 /*contact section*/
-
-
 .contact-section {
     width: 100%;
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     gap: 10%;
     padding: 40px;
     box-sizing: border-box;
@@ -265,89 +275,46 @@ footer h1 {
     width: 100%;
 }
 
-.social-icons a i{
-    color: white;
-    margin-top: 40px;
-}
-
-.social-box{
+.social-box {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
-.social-box i{
+.social-box i {
     color: rgba(129, 67, 211, 0.705);
     font-size: 30px;
     margin-right: 40px;
 }
 
-.social-box a{
+.social-box a {
     color: lightgray;
     text-decoration: none;
     font-size: 20px;
-    text-wrap: nowrap;
 }
 
 .contact-box p{
     max-width: 400px;
     margin-top: 30px;
     margin-bottom: 5px;
-
 }
 
-.contact-box input{
-
+.contact-box input,
+.contact-box textarea {
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
     padding: 7.5px 30px;
     background-color: lightgray;
-    width: 500px;
-    height: 25px;
     border: none;
     outline: none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-
-}
-
-.contact-box textarea{
-
-    width: 500px;
-    height: 100px;
-
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 15px;
 }
 
 .contact-box button{
     margin-top: 30px;
-    color: white;
-    padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid rgba(129, 67, 211, 0.705);
-    background-color: rgba(0, 0, 0, 0.705);
-    box-shadow: 0 0 5px rgba(129, 67, 211, 0.705);
-    cursor: pointer;
-    transition: 0.3s;
-
 }
-
-.button {
-    color: white;
-    padding: 15px 35px;
-    border-radius: 10px;
-    border: 1px solid rgba(129, 67, 211, 0.705);
-    background-color: rgba(0, 0, 0, 0.705);
-    box-shadow: 0 0 5px rgba(129, 67, 211, 0.705);
-    cursor: pointer;
-    transition: 0.3s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
- }
- 
- .button:hover {
-    background-color: rgba(129, 67, 211, 0.4);
- }
 
 /* sidebar section*/
 
@@ -473,10 +440,35 @@ footer h1 {
     box-shadow: 0 0 12px rgba(170, 127, 228, 0.705);
   }
   
-  .p {
-  text-align: center;
+  
+/*///////////////////////////////////////////////////////*/
+
+/* animation code for opening and closing sidebar (with the app.js file)*/
+
+@keyframes openSidebarAnimation {
+    to{
+        width: 80%;
+        opacity: 1;
+        bottom: 0;
+        border-radius: 0;
+    }
 }
 
+@keyframes closeSidebarAnimation {
+    from{
+        width: 80%;
+        opacity: 1;
+        bottom: 0;
+        border-radius: 0;
+    }
+
+    to{
+        width: 0;
+        opacity: 0;
+        bottom: 70%;
+        border-radius: 50%;
+    }
+}
 
 /* ==================== ANIMATIONS ==================== */
 @keyframes animate-gradient {
@@ -489,4 +481,54 @@ footer h1 {
     header ul, .box-icons { display: none; }
     .profile { flex-direction: column; padding: 20px; }
     .profile-info, .video-container { width: 100%; text-align: center; }
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        padding: 20px;
+        gap: 20px;
+        flex-direction: column;
+        width: 95%;
+        max-width: 95%;
+        box-sizing: border-box;
+    }
+
+    .button-section {
+        flex-direction: row;
+        gap: 15px;
+        padding: 10px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+   .button-section .button {
+        width: 85%;          /* slightly narrower */
+        max-width: 100px;    /* slightly smaller max width */
+        padding: 10px 0;     /* smaller padding */
+        font-size: 0.9rem;   /* smaller font */
+        text-align: center;
+    }
+
+    .wrapper, .profile-info, .video-container {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: auto;
+    }
+
+    html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .page-wrapper,
+    .container {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
 }
