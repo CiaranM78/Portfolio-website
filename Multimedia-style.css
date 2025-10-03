@@ -214,6 +214,14 @@ header ul li a:hover {
     box-shadow: 0 0 12px rgba(129, 67, 211, 0.705);
 }
 
+.button-section {
+    display: flex;           
+    justify-content: center; 
+    width: 100%;             
+    margin-top: 30px;  
+    padding-bottom: 5%;      
+}
+
 /* ==================== FOOTER ==================== */
 .footer {
     text-align: center;
@@ -465,6 +473,10 @@ footer h1 {
     box-shadow: 0 0 12px rgba(170, 127, 228, 0.705);
   }
   
+  .p {
+  text-align: center;
+}
+
 
 /* ==================== ANIMATIONS ==================== */
 @keyframes animate-gradient {

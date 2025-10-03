@@ -11,3 +11,5 @@ close.addEventListener("click", function () {
     sidebar.classList.remove("open-sidebar");
     sidebar.classList.add("close-sidebar");
 });
+
+
